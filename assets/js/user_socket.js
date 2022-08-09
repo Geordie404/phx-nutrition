@@ -95,7 +95,7 @@ channel.join()
       let carb = document.getElementById('carbohydrates').value
       let fats = document.getElementById('fats').value
   
-      channel.push('shout-food', {username: user, food: food, calories: cals, protein: prot, carbohydrates: carb, fats: fats})
+      channel.push('shout-food', {username: user, food: food, calories: cals, proteins: prot, carbohydrates: carb, fats: fats})
       
       document.getElementById('item-user').value = ''
       document.getElementById('item-food').value = ''
@@ -110,7 +110,7 @@ channel.join()
       let chatBox = document.querySelector('#food-box')
       let msgBlock = document.createElement('p')
   
-      msgBlock.insertAdjacentHTML('beforeend', `${payload.username} ${payload.food}  ${payload.calories} ${payload.protein} ${payload.carbohydrates} ${payload.fats}`)
+      msgBlock.insertAdjacentHTML('beforeend', `${payload.username} ${payload.food}  ${payload.calories} ${payload.proteins} ${payload.carbohydrates} ${payload.fats}`)
       chatBox.appendChild(msgBlock)
     })
 
