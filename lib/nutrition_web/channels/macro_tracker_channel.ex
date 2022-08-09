@@ -17,40 +17,21 @@ defmodule NutritionWeb.MacroTrackerChannel do
     {:noreply, socket}
   end
 
-  # Chat message box handler
-
-  @impl true
-  def handle_in("shout-chat", payload, socket) do
-    Chats.create_message(payload)
-    |> case do
-      {:ok, _} ->
-        Chats.list_messages
-        |> message_display("shout-chat", socket)
-    {:noreply, socket}
-    end
-  end
-
-  defp message_display(messages, shout, socket) do
-    messages
-    |> Enum.each(fn message -> push(socket, shout, %{
-        name: message.name,
-        body: message.body
-      }) end)
-  end
-
-
-  # Food box handler
+  # Food box handlers
 
   @impl true
   def handle_in("shout-food", payload, socket) do
     Food.create_item(payload)
-    |> case do
-      {:ok, _} ->
-        Food.list_items
-        |> food_display("shout-food", socket)
+    # |> case do
+    #   {:ok, _} ->
+    #     Food.list_items
+    #     |> food_display("shout-food", socket)
+    # end
+    broadcast(socket, "shout-food", payload)
     {:noreply, socket}
-    end
   end
+
+  # private function for displaying food items
 
   defp food_display(items, shout, socket) do
     items
@@ -63,5 +44,26 @@ defmodule NutritionWeb.MacroTrackerChannel do
         fats: item.fats
       }) end)
   end
+
+  # Chat message box handlers // currently disabled
+
+  # @impl true
+  # def handle_in("shout-chat", payload, socket) do
+  #   Chats.create_message(payload)
+  #   |> case do
+  #     {:ok, _} ->
+  #       Chats.list_messages
+  #       |> message_display("shout-chat", socket)
+  #   {:noreply, socket}
+  #   end
+  # end
+
+  # defp message_display(messages, shout, socket) do
+  #   messages
+  #   |> Enum.each(fn message -> push(socket, shout, %{
+  #       name: message.name,
+  #       body: message.body
+  #     }) end)
+  # end
 
 end

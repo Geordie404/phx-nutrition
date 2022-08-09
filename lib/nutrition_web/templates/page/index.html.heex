@@ -1,4 +1,5 @@
-
+<!-- HTML for Chat box -->
+<!-- 
 <h2>Chat</h2>
 <div id="chat-box">
 </div>
@@ -8,15 +9,16 @@
   <textarea placeholder="Your comment" id="user-msg"></textarea>
   <button type="submit">Post</button>
 </form>
-
- <!-- HTML for Macro Calc maker -->
-
 <br>
 
+-->
+
+<!-- HTML for Food Items box -->
+
+<input type="text" placeholder="User Name" id="item-user">
 <h2>Add Food</h2>
  
 <form id="food-form">
-  <input type="text" placeholder="User Name" id="item-user">
   <input type="text" placeholder="Food Item Name" id="item-food">
   <input type="text" placeholder="Calories" id="calories">
   <input type="text" placeholder="Proteins" id="proteins">
@@ -27,4 +29,7 @@
  
 <h2>Food Log</h2>
   <div id="food-box">
+    <%= for item <- @items do %>
+    <p><%= item.food %> <%= item.calories %> <%= item.proteins %> <%= item.carbohydrates %> <%= item.fats %></p>
+  <% end %>
 </div>

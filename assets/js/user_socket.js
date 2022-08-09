@@ -63,25 +63,27 @@ channel.join()
 
     //~~~~~~~~~ JS code for handling the chat box~~~~~~~~
 
-    document.getElementById('chat-form').addEventListener('submit', function(e){
-      e.preventDefault()
+    // Chat box temporatily disabled
+
+    // document.getElementById('chat-form').addEventListener('submit', function(e){
+    //   e.preventDefault()
   
-      let userName = document.getElementById('user-name').value
-      let userMsg = document.getElementById('user-msg').value
+    //   let userName = document.getElementById('user-name').value
+    //   let userMsg = document.getElementById('user-msg').value
   
-      channel.push('shout-chat', {name: userName, body: userMsg})
+    //   channel.push('shout-chat', {name: userName, body: userMsg})
   
-      document.getElementById('user-name').value = ''
-      document.getElementById('user-msg').value = ''
-    })
+    //   document.getElementById('user-name').value = ''
+    //   document.getElementById('user-msg').value = ''
+    // })
   
-    channel.on('shout-chat', payload => {
-      let chatBox = document.querySelector('#chat-box')
-      let msgBlock = document.createElement('p')
+    // channel.on('shout-chat', payload => {
+    //   let chatBox = document.querySelector('#chat-box')
+    //   let msgBlock = document.createElement('p')
   
-      msgBlock.insertAdjacentHTML('beforeend', `${payload.name}: ${payload.body}`)
-      chatBox.appendChild(msgBlock)
-    })
+    //   msgBlock.insertAdjacentHTML('beforeend', `${payload.name}: ${payload.body}`)
+    //   chatBox.appendChild(msgBlock)
+    // })
   
     //~~~~~~~~~ JS code for handling the food log ~~~~~~~~
 
@@ -97,7 +99,7 @@ channel.join()
   
       channel.push('shout-food', {username: user, food: food, calories: cals, proteins: prot, carbohydrates: carb, fats: fats})
       
-      document.getElementById('item-user').value = ''
+      document.getElementById('item-user').value = 'Geordie'
       document.getElementById('item-food').value = ''
       document.getElementById('calories').value = ''
       document.getElementById('proteins').value = ''
@@ -110,7 +112,7 @@ channel.join()
       let chatBox = document.querySelector('#food-box')
       let msgBlock = document.createElement('p')
   
-      msgBlock.insertAdjacentHTML('beforeend', `${payload.username} ${payload.food}  ${payload.calories} ${payload.proteins} ${payload.carbohydrates} ${payload.fats}`)
+      msgBlock.insertAdjacentHTML('beforeend', `${payload.food}  ${payload.calories} ${payload.proteins} ${payload.carbohydrates} ${payload.fats}`)
       chatBox.appendChild(msgBlock)
     })
 
