@@ -1,5 +1,9 @@
 # Nutrition
 
+Implementation to do list:
+- add check boxes to food list to delete items, remove from both UI and database
+- log checked items to a food log thats sorted by date
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
